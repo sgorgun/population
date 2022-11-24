@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PopulationTask
+﻿namespace PopulationTask
 {
     public static class Population
     {
@@ -28,30 +26,27 @@ namespace PopulationTask
 
             if (currentPopulation <= 0)
             {
-                throw new ArgumentException(null);
+                throw new ArgumentException($"{nameof(currentPopulation)} can not be less 0.", nameof(currentPopulation));
             }
 
             if (visitors < 0)
             {
-                throw new ArgumentException(null);
+                throw new ArgumentException($"{nameof(visitors)} can not be less 0.", nameof(visitors));
             }
 
             if (initialPopulation <= 0)
             {
-                throw new ArgumentException(null);
+                throw new ArgumentException($"{nameof(initialPopulation)} can not be less 0  or equals 0.", nameof(initialPopulation));
             }
 
             if (currentPopulation < initialPopulation)
             {
-                throw new ArgumentException(null);
+                throw new ArgumentException($"{nameof(initialPopulation)} can not be less than {nameof(initialPopulation)}.", nameof(currentPopulation));
             }
 
-            switch (percent)
+            if (percent is < 0 or > 100)
             {
-                case < 0:
-                    throw new ArgumentException(null);
-                case > 100:
-                    throw new ArgumentException(null);
+                throw new ArgumentOutOfRangeException(nameof(percent), "Throw if the value of percents is less then 0% or more then 100%.");
             }
 
             while (initialPopulation <= currentPopulation)
